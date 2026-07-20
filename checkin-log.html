@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cates Check-In Log</title>
+<style>
+:root{
+  --bg:#faf9f6; --card:#ffffff; --ink:#1c1c1a; --ink-2:#5f5e5a; --ink-3:#8a8880;
+  --line:#e6e4dd; --line-2:#d3d1c7;
+  --green-bg:#eaf3de; --green-mid:#3b6d11; --green-dark:#27500a;
+  --amber-bg:#faeeda; --amber-mid:#854f0b; --amber-dark:#633806;
+  --red-bg:#fcebeb; --red-mid:#a32d2d; --red-dark:#791f1f;
+  --neutral-bg:#f1efe8;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#161614; --card:#1f1f1d; --ink:#f0efe9; --ink-2:#b4b2a9; --ink-3:#888780;
+    --line:#33332f; --line-2:#44443f;
+    --green-bg:#22350f; --green-mid:#97c459; --green-dark:#c0dd97;
+    --amber-bg:#3d2a08; --amber-mid:#ef9f27; --amber-dark:#fac775;
+    --red-bg:#3a1414; --red-mid:#f09595; --red-dark:#f7c1c1;
+    --neutral-bg:#262623;
+  }
+}
+*{box-sizing:border-box; margin:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+  font-size:16px; line-height:1.55; padding:2.5rem 1rem 4rem;
+}
+.wrap{max-width:760px; margin:0 auto}
+header.site{border-bottom:2px solid var(--ink); padding-bottom:1.25rem; margin-bottom:2rem}
+header.site h1{font-size:26px; font-weight:600; letter-spacing:-0.01em}
+header.site p{color:var(--ink-2); font-size:14px; margin-top:4px}
+.targets{display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:12px; font-size:13px; color:var(--ink-2)}
+.targets b{color:var(--ink); font-weight:600}
+
+.week{
+  background:var(--card); border:1px solid var(--line); border-radius:14px;
+  padding:1.4rem 1.5rem; margin-bottom:2rem;
+}
+.week-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px; margin-bottom:1rem}
+.week-head h2{font-size:18px; font-weight:600}
+.week-head .stamp{font-size:13px; color:var(--ink-3)}
+
+.tiles{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-bottom:10px}
+@media (max-width:540px){ .tiles{grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px} }
+.tile{border-radius:10px; padding:12px 14px}
+.tile .lbl{font-size:12px; margin-bottom:2px}
+.tile .val{font-size:24px; font-weight:600; line-height:1.2}
+.tile .sub{font-size:12px; margin-top:2px}
+.tile.green{background:var(--green-bg)} .tile.green .lbl,.tile.green .sub{color:var(--green-mid)} .tile.green .val{color:var(--green-dark)}
+.tile.amber{background:var(--amber-bg)} .tile.amber .lbl,.tile.amber .sub{color:var(--amber-mid)} .tile.amber .val{color:var(--amber-dark)}
+.tile.red{background:var(--red-bg)} .tile.red .lbl,.tile.red .sub{color:var(--red-mid)} .tile.red .val{color:var(--red-dark)}
+.tile.neutral{background:var(--neutral-bg)} .tile.neutral .lbl,.tile.neutral .sub{color:var(--ink-2)} .tile.neutral .val{color:var(--ink)}
+
+table{width:100%; border-collapse:collapse; font-size:13.5px; margin:1rem 0 1.1rem}
+th{color:var(--ink-3); font-weight:500; text-align:left; padding:4px 0; border-bottom:1px solid var(--line-2)}
+th.r, td.r{text-align:right}
+td{padding:5px 0; border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:none}
+td.g{color:var(--green-mid); font-weight:500}
+td.a{color:var(--amber-mid); font-weight:500}
+td.d{color:var(--red-mid); font-weight:500}
+
+.notes{border-top:1px solid var(--line-2); padding-top:12px; font-size:13.5px; display:grid; gap:7px}
+.notes p{color:var(--ink-2)}
+.notes b{font-weight:600}
+.notes .w{color:var(--green-mid)}
+.notes .f{color:var(--red-mid)}
+.notes .n{color:var(--ink)}
+
+footer{color:var(--ink-3); font-size:12.5px; text-align:center; margin-top:1rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="site">
+  <h1>The Cates Check-In Log</h1>
+  <p>Weekly final reports · fat loss with muscle retention · newest week on top</p>
+  <div class="targets">
+    <span>KCAL <b>train 2,250 / rest 2,100</b></span>
+    <span>PROTEIN <b>150–170g</b></span>
+    <span>FIBER <b>35g</b></span>
+    <span>WAIST BASELINE <b>44.0"</b></span>
+    <span>CREATINE <b>5g/day</b></span>
+  </div>
+</header>
+
+<!-- ============ WEEK 2 ============ -->
+<section class="week" id="week-2">
+  <div class="week-head">
+    <h2>Week 2 · Jul 13–19</h2>
+    <span class="stamp">final · 7/7 logged · 3/3 lifts</span>
+  </div>
+
+  <div class="tiles">
+    <div class="tile green"><div class="lbl">Protein</div><div class="val">102%</div><div class="sub">164g avg · was 99%</div></div>
+    <div class="tile green"><div class="lbl">Calories</div><div class="val">91%</div><div class="sub">1,959 avg · under</div></div>
+    <div class="tile red"><div class="lbl">Fiber</div><div class="val">71%</div><div class="sub">25g avg · fix in place</div></div>
+  </div>
+  <div class="tiles">
+    <div class="tile neutral"><div class="lbl">Weight · Sun</div><div class="val">200.6</div><div class="sub">flat · creatine water</div></div>
+    <div class="tile green"><div class="lbl">Waist</div><div class="val">43.5"</div><div class="sub">−0.5" vs 44.0 baseline</div></div>
+    <div class="tile neutral"><div class="lbl">Burn</div><div class="val">2,228</div><div class="sub">6 sessions</div></div>
+  </div>
+
+  <table>
+    <tr><th>Day</th><th>Session</th><th class="r">kcal</th><th class="r">Protein</th><th class="r">Fiber</th><th class="r">Burn</th></tr>
+    <tr><td>Mon</td><td class="a">missed elliptical</td><td class="r">1,987</td><td class="r g">163</td><td class="r">30</td><td class="r">—</td></tr>
+    <tr><td>Tue</td><td>Push</td><td class="r">1,978</td><td class="r g">167</td><td class="r">32</td><td class="r">473</td></tr>
+    <tr><td>Wed</td><td>Elliptical</td><td class="r">2,050</td><td class="r a">149</td><td class="r d">20</td><td class="r">232</td></tr>
+    <tr><td>Thu</td><td>Pull</td><td class="r">1,989</td><td class="r g">160</td><td class="r d">16</td><td class="r">474</td></tr>
+    <tr><td>Fri</td><td>Elliptical</td><td class="r">1,918</td><td class="r g">168</td><td class="r d">20</td><td class="r">232</td></tr>
+    <tr><td>Sat</td><td>Legs + warm-up</td><td class="r">1,839</td><td class="r g">176</td><td class="r">28</td><td class="r">585</td></tr>
+    <tr><td>Sun</td><td>Elliptical</td><td class="r">1,955</td><td class="r g">164</td><td class="r">29</td><td class="r">232</td></tr>
+  </table>
+
+  <div class="notes">
+    <p><b class="w">Working:</b> Friday snack swap held (168g) · Saturday flipped worst → best (176g on leg day) · all lifts done · tape down while scale holds water — the recomp pattern</p>
+    <p><b class="f">Fix deployed:</b> ~30g Anthony's oat fiber in the daily shake (ramp up over a week) — closes the fiber gap on its own</p>
+    <p><b class="n">Week 3:</b> Protein unchanged · eat full 2,250 on training days, esp. Saturday · first true weight + waist trend call Sun Jul 26</p>
+  </div>
+</section>
+
+<!-- ============ WEEK 1 ============ -->
+<section class="week" id="week-1">
+  <div class="week-head">
+    <h2>Week 1 · Jul 6–12</h2>
+    <span class="stamp">final · baseline week</span>
+  </div>
+
+  <div class="tiles">
+    <div class="tile green"><div class="lbl">Protein</div><div class="val">99%</div><div class="sub">strong open</div></div>
+    <div class="tile green"><div class="lbl">Calories</div><div class="val">95%</div><div class="sub">on target</div></div>
+    <div class="tile amber"><div class="lbl">Fiber</div><div class="val">80%</div><div class="sub">~28g avg</div></div>
+  </div>
+  <div class="tiles">
+    <div class="tile green"><div class="lbl">Weight</div><div class="val">200.2</div><div class="sub">202.4 → 200.2 · −2.2</div></div>
+    <div class="tile neutral"><div class="lbl">Waist</div><div class="val">44.0"</div><div class="sub">baseline set</div></div>
+    <div class="tile neutral"><div class="lbl">Burn</div><div class="val">2,852</div><div class="sub">6 sessions + rest day</div></div>
+  </div>
+
+  <table>
+    <tr><th>Day</th><th>Session</th><th class="r">Protein %</th><th class="r">Burn</th></tr>
+    <tr><td>Mon–Thu</td><td>Push Tue · Pull Thu · Elliptical</td><td class="r g">106% avg</td><td class="r">694 / 379 / 84 / 309</td></tr>
+    <tr><td>Fri</td><td>Elliptical</td><td class="r a">88%</td><td class="r">437</td></tr>
+    <tr><td>Sat</td><td>Legs</td><td class="r d">78%</td><td class="r">557</td></tr>
+    <tr><td>Sun</td><td>Elliptical</td><td class="r g">92%</td><td class="r">392</td></tr>
+  </table>
+
+  <div class="notes">
+    <p><b class="w">Working:</b> Mon–Thu excellent (106% protein) · calories dialed in from day one · −2.2 lbs opening week</p>
+    <p><b class="f">Fixes set:</b> Friday 3:30 snack → cottage cheese or Greek yogurt (+20–25g protein) · Saturday protein priority on training days</p>
+    <p><b class="n">Week 2:</b> Deploy both fixes · creatine loading continues — no weight trend calls yet</p>
+  </div>
+</section>
+
+<footer>The Cates Check-In Log · v1 · updated Jul 20, 2026 · trend analysis begins Week 3</footer>
+
+</div>
+</body>
+</html>
